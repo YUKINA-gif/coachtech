@@ -1,9 +1,10 @@
 <template>
   <div class="management flex">
+    <!-- メニューバー -->
     <div class="tabs">
       <nav>
         <ul class="contents">
-          <li @click="$router.push('/manager')" >店舗代表者権限発行</li>
+          <li @click="$router.push('/manager')">店舗代表者権限発行</li>
           <li @click="$router.push('/manager/create')">管理者権限発行</li>
         </ul>
       </nav>
@@ -11,20 +12,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      stores: [],
-      areas: [],
-      genres: [],
-      postItem: [],
-    }
-  },
-}
-</script>
-
 <style scoped>
+/* ====================
+      メニューバー
+==================== */
 .management{
   width: 100%;
 }

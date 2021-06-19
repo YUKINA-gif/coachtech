@@ -1,22 +1,20 @@
 <template>
-  <div class="manager_create">
-    <!-- 管理者権限発行 -->
+  <div class="store_manager">
+    <!-- 店舗代表者権限発行 -->
     <Management />
-    <h2>管理者権限発行</h2>
+    <h2>店舗代表者権限発行</h2>
     <table>
       <tr>
-        <!-- ID -->
         <th>ID:</th>
         <td>
-          <!-- IDエラーメッセージ -->
           <input type="text" v-model="login_id" />
           <p v-if="error" class="error">IDを入力してください</p>
         </td>
       </tr>
     </table>
-    <!-- パスワード発行 -->
+
     <button class="button" @click="make_password">パスワードを発行する</button>
-    <!-- パスワードカード -->
+    <!-- パスワード表示カード -->
     <div class="password_card" v-if="password_card">
       <p class="password_issuance">パスワードを発行しました</p>
       <p class="password">{{ password }}</p>
@@ -28,7 +26,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 import Management from "../components/Management.vue";
@@ -54,9 +51,12 @@ export default {
       } else {
         // そうでなければパスワード発行
         axios
-          .post("https://rese-booking.herokuapp.com/api/manage/create", {
-            login_id: this.login_id,
-          })
+          .post(
+            "https://rese-booking.herokuapp.com/api/manage/storeManager/create",
+            {
+              login_id: this.login_id,
+            }
+          )
           // ランダム英字のパスワード発行
           .then((response) => {
             this.password = response.data.password;
@@ -73,9 +73,9 @@ export default {
 
 <style scoped>
 /* ====================
-    管理者権限発行
+  店舗代表者権限発行
 ==================== */
-  .manager_create {
+  .store_manager {
     width: 80%;
     margin: 0 200px 0;
   }

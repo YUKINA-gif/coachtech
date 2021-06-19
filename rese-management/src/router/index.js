@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from "../views/ManagerLogin.vue";
-import Manager from "../views/Manager.vue";
+import StoreManagerCreate from "../views/StoreManagerCreate.vue";
 import CreateManager from '../views/ManagerCreate.vue'
 import store from "../store/index";
 
@@ -14,9 +14,9 @@ const routes = [
     component: Login,
   },
   {
-    path: "/manager",
-    name: "Manager",
-    component: Manager,
+    path: "/manager/store-manager/create",
+    name: "StoreManagerCreate",
+    component: StoreManagerCreate,
     meta: {
       requiresAuth: true,
     },
@@ -26,9 +26,9 @@ const routes = [
     name: "CreateManager",
     component: CreateManager,
     meta: {
-      requiresAuth: true
-    }
-  }
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({

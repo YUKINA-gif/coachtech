@@ -1,65 +1,84 @@
 <template>
   <div class="management_login">
+    <!-- 管理者ログイン -->
     <div class="login_card">
       <h2>管理者ログイン</h2>
-        <div>
-          <ul>
-            <li>
-              <label for="login_id">ID:</label>
-              <input
-                type=""
-                id="login_id"
-                placeholder="IDを入力してください"
-                v-model="login_id"
-              />
-              <span class="error" v-if="login_id_required">IDが入力されていません</span>
-            </li>
-            <li>
-              <label for="password">パスワード:</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="パスワードを入力してください"
-                v-model="password"
-              />
-              <span class="error" v-if="password_required">パスワードが入力されていません</span>
-            </li>
+      <div>
+        <ul>
+          <li>
+            <!-- ID -->
+            <label for="login_id">ID:</label>
+            <input
+              type=""
+              id="login_id"
+              placeholder="IDを入力してください"
+              v-model="login_id"
+            />
+            <!-- IDエラーメッセージ -->
+            <span class="error" v-if="login_id_required"
+              >IDが入力されていません</span
+            >
+          </li>
+          <li>
+            <!-- パスワード -->
+            <label for="password">パスワード:</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="パスワードを入力してください"
+              v-model="password"
+            />
+            <!-- パスワードエラーメッセージ -->
+            <span class="error" v-if="password_required"
+              >パスワードが入力されていません</span
+            >
+          </li>
         </ul>
-      <button @click="manage_login" type="button" class="button">ログイン</button>
+        <button @click="manage_login" type="button" class="button">
+          ログイン
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      login_id :"",
+      login_id: "",
       password: "",
       login_id_required: false,
       password_required: false,
-    }
+    };
   },
   methods: {
-    manage_login(){
-      if (this.login_id == ""){
-        this.login_id_required = true
-      } if (this.password == ""){
-        this.password_required = true
+    // ログイン
+    manage_login() {
+      // バリデーション
+      // IDが空ならメッセージ表示
+      if (this.login_id == "") {
+        this.login_id_required = true;
+      }
+      // パスワードが空ならメッセージ表示
+      if (this.password == "") {
+        this.password_required = true;
       } else {
-      this.$store.dispatch("login", {
-        login_id: this.login_id,
-        password: this.password,
-      });
+        // 上記以外ならログイン
+        this.$store.dispatch("login", {
+          login_id: this.login_id,
+          password: this.password,
+        });
       }
     },
   },
-}
+};
 </script>
 
 <style scoped>
+/* ====================
+        ログイン
+==================== */
   .management_login {
     width: 50%;
     margin: 140px auto 0;
@@ -92,11 +111,11 @@ export default {
     padding: 10px 15px;
     background-color: rgba(0, 0, 0, 0.9);
   }
-  .error{
+  .error {
     color: red;
     margin-left: 30%;
   }
-  label{
+  label {
     font-weight: bold;
   }
 /* ====================
@@ -110,7 +129,7 @@ export default {
   input {
     width: 90%;
   }
-  .error{
+  .error {
     margin: 0;
   }
 }

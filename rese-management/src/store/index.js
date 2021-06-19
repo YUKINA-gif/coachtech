@@ -43,7 +43,7 @@ export default new Vuex.Store({
       );
       commit("auth", responseLogin.data.auth);
       commit("manager", responseManager.data.manager);
-      router.replace("/manager");
+      router.replace("/manager/store-manager/create");
     },
     logout({ commit }) {
       axios

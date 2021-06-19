@@ -1,23 +1,25 @@
 <template>
   <div class="header flex">
+    <!-- ヘッダー -->
     <div class="flex">
       <h1>Rese</h1>
       <div class="management">
         <p>店舗管理画面</p>
       </div>
     </div>
-    <p class="logout" @click="logout" v-if="this.$store.state.auth == true">ログアウト</p>
+    <p class="logout" @click="logout" v-if="this.$store.state.auth == true">
+      ログアウト
+    </p>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
-    logout(){
+    logout() {
       this.$store.dispatch("logout");
     },
   },
@@ -25,6 +27,9 @@ export default {
 </script>
 
 <style scoped>
+/* ====================
+      ヘッダー
+==================== */
   .header {
     height: 60px;
     line-height: 60px;
@@ -43,7 +48,7 @@ export default {
   h1 {
     margin-left: 20px;
   }
-  .nav{
+  .nav {
     position: absolute;
     right: 0;
   }
@@ -52,12 +57,12 @@ export default {
     font-weight: bold;
     cursor: pointer;
   }
-  .management{
+  .management {
     margin-left: 20px;
     font-weight: bolder;
     padding: 0 10px;
   }
-  .logout{
+  .logout {
     margin-right: 20px;
     font-weight: bold;
     cursor: pointer;
