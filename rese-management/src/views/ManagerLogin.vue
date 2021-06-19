@@ -1,0 +1,117 @@
+<template>
+  <div class="management_login">
+    <div class="login_card">
+      <h2>管理者ログイン</h2>
+        <div>
+          <ul>
+            <li>
+              <label for="login_id">ID:</label>
+              <input
+                type=""
+                id="login_id"
+                placeholder="IDを入力してください"
+                v-model="login_id"
+              />
+              <span class="error" v-if="login_id_required">IDが入力されていません</span>
+            </li>
+            <li>
+              <label for="password">パスワード:</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="パスワードを入力してください"
+                v-model="password"
+              />
+              <span class="error" v-if="password_required">パスワードが入力されていません</span>
+            </li>
+        </ul>
+      <button @click="manage_login" type="button" class="button">ログイン</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      login_id :"",
+      password: "",
+      login_id_required: false,
+      password_required: false,
+    }
+  },
+  methods: {
+    manage_login(){
+      if (this.login_id == ""){
+        this.login_id_required = true
+      } if (this.password == ""){
+        this.password_required = true
+      } else {
+      this.$store.dispatch("login", {
+        login_id: this.login_id,
+        password: this.password,
+      });
+      }
+    },
+  },
+}
+</script>
+
+<style scoped>
+  .management_login {
+    width: 50%;
+    margin: 140px auto 0;
+  }
+  .login_card {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #c2c2c2;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+    line-height: 3;
+    text-align: center;
+  }
+  input {
+    width: 60%;
+    padding: 8px;
+  }
+  label {
+    display: inline-block;
+    width: 30%;
+  }
+  li {
+    text-align: left;
+    margin: 30px 0;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  .button {
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  .error{
+    color: red;
+    margin-left: 30%;
+  }
+  label{
+    font-weight: bold;
+  }
+/* ====================
+      レスポンシブ
+==================== */
+@media screen and (max-width: 768px) {
+  .login {
+    width: 90%;
+  }
+  label,
+  input {
+    width: 90%;
+  }
+  .error{
+    margin: 0;
+  }
+}
+</style>
