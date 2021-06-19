@@ -4,7 +4,7 @@
     <div class="tabs">
       <nav>
         <ul class="contents">
-          <li @click="$router.push('/manager')">店舗代表者権限発行</li>
+          <li @click="$router.push('/manager/store-manager/create')">店舗代表者権限発行</li>
           <li @click="$router.push('/manager/create')">管理者権限発行</li>
         </ul>
       </nav>
